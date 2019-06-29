@@ -64,7 +64,7 @@
           <div class="form-group">
             비공개 <input type="checkbox" id="secret" class="form-check-label">
           </div>
-          <router-link class="btn btn-outline-secondary btn-sm" to="/GroupRoom" style="float:left">확인</router-link>
+          <router-link class="btn btn-outline-secondary btn-sm" to="/MakeMeetingDone" style="float:left">확인</router-link>
         </form>
       </div>
       <br>
