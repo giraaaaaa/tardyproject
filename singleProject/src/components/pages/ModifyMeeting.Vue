@@ -18,7 +18,7 @@
             <li class="breadcrumb-item">
               <a href="index.html">Home</a>
             </li>
-            <li class="breadcrumb-item" aria-current="page">모임방 개설</li>
+            <li class="breadcrumb-item" aria-current="page">모임방 수정</li>
           </ol>
         </nav>
       </div>
