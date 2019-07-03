@@ -7,7 +7,7 @@ CREATE TABLE meetingroom(
     meetingtime VARCHAR(30) NOT NULL,
     meetinglocation VARCHAR(30) NOT NULL,
     latepenalty VARCHAR(30) NOT NULL,
-    prfilepic VARCHAR(30) NOT NULL,
+    profilepic VARCHAR(30) NOT NULL,
     personal VARCHAR(30) NOT NULL
 )DEFAULT CHARSET=utf8;
 

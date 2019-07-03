@@ -16,7 +16,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html">Home</a>
+              <a href="/GroupRoom">Home</a>
             </li>
             <li class="breadcrumb-item" aria-current="page">모임방 개설</li>
           </ol>
@@ -91,6 +91,7 @@
   import axios from 'axios'
 
   export default {
+   
     data() {
       return {
         context : 'http://localhost:9000/meetings',
@@ -99,9 +100,9 @@
         meetingcontent: '',
         meetingtime: '',
         meetinglocation: '',
-        latepenalty: '',
-        profilepic: 'def',
-        personal: 'open'
+        latepenalty: ''
+        // profilepic: 'def',
+        // personal: 'open'
       }
     },
 
@@ -122,6 +123,7 @@
       //   personal = "open"
       // },
       save(e) {
+       
         let data = {
           meettingname: this.meettingname,
           member: this.member,
@@ -129,11 +131,11 @@
           meetingtime: this.meetingtime,
           meetinglocation: this.meetinglocation,
           latepenalty: this.latepenalty,
-          profilepic: this.profilepic,
-          personal: this.personal
+          // profilepic: this.profilepic,
+          // personal: this.personal
         }
         alert(data.meettingname)
-        alert(data.personal)
+        // alert(data.personal)
         let headers = {
          'Content-Type': 'application/json',
          'Authorization' : 'JWT fefege..'
@@ -144,6 +146,7 @@
                   {headers: headers})
           .then(res=>{
             alert(`SUCCESS2 : ${res.data}`)
+            location.href="/GroupRoom";            
           })
           .catch(e=>{
             alert('ERROR')

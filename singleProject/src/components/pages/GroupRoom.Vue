@@ -14,10 +14,7 @@
       <div class="container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="index.html">Home</a>
-            </li>
-            <li class="breadcrumb-item" aria-current="page">모임방</li>
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
           </ol>
         </nav>
       </div>
@@ -68,44 +65,21 @@
             <th style="width:20%">스케쥴명</th>
             <th style="width:15%">시간</th>
             <th style="width:15%">장소</th>
-            <th style="width:15%">선택</th>
+            <!-- <th style="width:15%">선택</th> -->
 
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>4</th>
-            <td>액트액트 리액트</td>
-            <td>19/06/29 4:30</td>
-            <td>종각역 YMCA 7층</td>
-            <router-link class="btn btn-outline-secondary btn-sm" to="/ModifyMeeting">수정</router-link>
-            <input type="button" style="float:none" class="btn btn-outline-secondary btn-sm" value="삭제">
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>액트액트 리액트</td>
-            <td>19/06/29 4:30</td>
-            <td>종각역 YMCA 7층</td>
-            <router-link class="btn btn-outline-secondary btn-sm" to="/ModifyMeeting">수정</router-link>
-            <input type="button" style="float:none" class="btn btn-outline-secondary btn-sm" value="삭제">
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>스프링 부트</td>
-            <td>19/06/29 4:30</td>
-            <td>종각역 YMCA 7층</td>
-            <router-link class="btn btn-outline-secondary btn-sm" to="/ModifyMeeting">수정</router-link>
-            <input type="button" style="float:none" class="btn btn-outline-secondary btn-sm" value="삭제">
+            <tr v-for="item in meetinglist" v-bind:key="item">
+                <td>{{item.id}}</td>
+                <td><router-link @click="move(item)" to="/Meeting">{{item.meettingname}}</router-link></td>
+                <td>{{item.meetingtime}}</td>
+                <td>{{item.meetinglocation}}</td>
+            </tr>
 
-          </tr>
-          <tr>
-            <th>1</th>
-            <td>자바 스크립트</td>
-            <td>19/06/29 4:30</td>
-            <td>종각역 YMCA 7층</td>
-            <router-link class="btn btn-outline-secondary btn-sm" to="/ModifyMeeting">수정</router-link>
-            <input type="button" style="float:none" class="btn btn-outline-secondary btn-sm" value="삭제">
-          </tr>
+
+
+          
         </tbody>
       </table>
       <router-link class="btn btn-outline-secondary btn-sm" to="/MakeMeeting" style="float:right">글쓰기</router-link>
@@ -127,11 +101,33 @@
   import CopyRight from "@/components/common/CopyRight/"
   import HeaderComponent from "@/components/common/HeaderComponent/"
   import MoveTop from "@/components/common/MoveTop/"
-  export default {
+  import {store} from '../../store'
+  import axios from 'axios'
 
+  export default {
+    move(item){
+        store.state.id = item.id;
+        store.state.meettingname = item.meettingname;  
+        store.state.member = item.member;  
+        store.state.meetingcontent = item.meetingcontent;  
+        store.state.meetingtime = item.meetingtime;  
+        store.state.meetinglocation = item.meetinglocation;  
+        store.state.latepenalty = item.latepenalty;  
+    },   
 
     data() {
       return {
+        context : 'http://localhost:9000/meetings',
+        meettingname: '',
+        member: '',
+        meetingcontent: '',
+        meetingtime: '',
+        meetinglocation: '',
+        latepenalty: '',
+        meetinglist:[]
+        // profilepic: 'def',
+        // personal: 'open'
+        
       }
     },
     components: {
@@ -139,8 +135,26 @@
       CopyRight,
       MoveTop
     },
+    
+    created() {
+          axios.get(`${this.context}/list`).then((response) => {
+              console.log(response);
+              if (response.status == 200) {
+                this.meetinglist = response.data;
+              }
+          });
+        },
     methods: {
-      // (){}
+       addSubmit() {
+            // make ajax request and pass the data. I'm not certain how to do it with axios but something along the lines of this
+            axios.post('/list', {
+              meettingname : this.meetingname,
+              member : this.member,
+              meetingcontent : this.meetingcontent,
+              meetingtime : this.meetingtime,
+              meetinglocation : this.meetinglocation,
+              latepenalty : this.latepenalty
+            })}
     }
   }
 

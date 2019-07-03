@@ -6,6 +6,7 @@ import router from './router'
 import 'bootstrap';
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/alert';
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -13,6 +14,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

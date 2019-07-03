@@ -9,6 +9,7 @@ import myComponent from '@/components/myComponent'
 import MakeMeeting from '@/components/pages/MakeMeeting'
 import ModifyMeeting from '@/components/pages/ModifyMeeting'
 import MakeMeetingDone from '@/components/MakeMeetingDone'
+import Meeting from '@/components/pages/Meeting'
 import GroupRoom from '@/components/pages/GroupRoom'
 
 Vue.use(Router)
@@ -41,11 +42,11 @@ export default new Router({
       name: 'ModifyMeeting',
       component: ModifyMeeting
     },
-    // {
-    //   path: '/find-user',
-    //   name: 'FindUser',
-    //   component: FindUser
-    // },
+    {
+      path: '/Meeting',
+      name: 'Meeting',
+      component: Meeting
+    },
     // {
     //   path: '/mypage',
     //   name: 'Mypage',
