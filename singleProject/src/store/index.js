@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex)
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
     state: {
         id : '',
         meettingname: '',
@@ -21,4 +21,3 @@ const store = new Vuex.Store({
     }
 })
 
-export default store;

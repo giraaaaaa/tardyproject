@@ -72,7 +72,8 @@
         <tbody>
             <tr v-for="item in meetinglist" v-bind:key="item">
                 <td>{{item.id}}</td>
-                <td><router-link @click="move(item)" to="/Meeting">{{item.meettingname}}</router-link></td>
+                <!-- <td><router-link @click="move(item)" to="/Meeting">{{item.meettingname}}</router-link></td> -->
+                <td><a @click="move(item)">{{item.meettingname}}</a></td>
                 <td>{{item.meetingtime}}</td>
                 <td>{{item.meetinglocation}}</td>
             </tr>
@@ -105,15 +106,7 @@
   import axios from 'axios'
 
   export default {
-    move(item){
-        store.state.id = item.id;
-        store.state.meettingname = item.meettingname;  
-        store.state.member = item.member;  
-        store.state.meetingcontent = item.meetingcontent;  
-        store.state.meetingtime = item.meetingtime;  
-        store.state.meetinglocation = item.meetinglocation;  
-        store.state.latepenalty = item.latepenalty;  
-    },   
+    
 
     data() {
       return {
@@ -145,6 +138,19 @@
           });
         },
     methods: {
+      move(item){
+        store.state.id = item.id;
+        store.state.meettingname = item.meettingname;  
+        store.state.member = item.member;  
+        store.state.meetingcontent = item.meetingcontent;  
+        store.state.meetingtime = item.meetingtime;  
+        store.state.meetinglocation = item.meetinglocation;  
+        store.state.latepenalty = item.latepenalty;  
+                alert(store.state.id);
+                alert(store.state.meetinglocation);
+
+               this.$router.push('/Meeting');
+        },   
        addSubmit() {
             // make ajax request and pass the data. I'm not certain how to do it with axios but something along the lines of this
             axios.post('/list', {

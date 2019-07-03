@@ -29,35 +29,31 @@
     <div>
       <div class="container">
         <form>
-                <!-- {{meetinglist.id}}
-                {{meetinglist.meettingname}}
-                {{meetinglist.meetingtime}}
-                {{meetinglist.meetinglocation}} -->
-            {{this.$store.state.meettingname}}
+           
+     
 
           <div class="form-group">
-            <label for="meettingname" >모임 이름 :  </label>
-            <!-- <p>{{this.$store.state.meettingname}}</p> -->
+            <label for="meettingname" >모임 이름 : {{this.$store.state.meettingname}} </label>
           </div>
           <div class="form-group">
-            <label for="member">인 원</label>
+            <label for="member">인 원 : {{this.$store.state.member}} </label>
 
           </div>
           <div class="form-group">
-            <label for="meetingcontent">모임 설명</label>
+            <label for="meetingcontent">모임 설명 : {{this.$store.state.meetingcontent}}</label>
           </div>
           <div class="form-group">
-            <label for="meetingtime">시간 : </label>
+            <label for="meetingtime">시간 :  {{this.$store.state.meetingtime}}</label>
             
             
           </div>
           <div class="form-group">
-            <label for="meetinglocation">장소</label>
+            <label for="meetinglocation">장소 :  {{this.$store.state.meetinglocation}}</label>
 
           </div>
 
           <div class="form-group">
-            <label for="latepenalty">지각비용</label>
+            <label for="latepenalty">지각비용 :  {{this.$store.state.latepenalty}}</label>
 
           </div>
           <!-- <div class="form-group">
@@ -98,43 +94,37 @@
     data() {
       return {
         context : 'http://localhost:9000/meetings',
-        // meettingname: '',
-        // member: '',
-        // meetingcontent: '',
-        // meetingtime: '',
-        // meetinglocation: '',
-        // latepenalty: '',
-        // meetinglist:[]
+        meettingname: '',
+        member: '',
+        meetingcontent: '',
+        meetingtime: '',
+        meetinglocation: '',
+        latepenalty: '',
+        meetinglist:[]
         // profilepic: 'def',
         // personal: 'open'
         
       }
     },
-    // created() {
-    //       axios.get(`${this.context}/list`).then((response) => {
-    //           console.log(response);
-    //           if (response.status == 200) {
-    //             this.meetinglist = response.data;
-    //             // store.state.id = response.date;
-    //           }
-    //       });
-    //     },
+    created() {
+          axios.get(`${this.context}/list`).then((response) => {
+              console.log(response);
+              if (response.status == 200) {
+                this.meetinglist = response.data;
+                // store.state.id = response.date;
+              }
+          });
+        },
     components: {
       CopyRight,
       HeaderComponent,
       MoveTop
     },
     methods: {
-      // sad(e){
-      //   meettingname = this.meetingname,
-      //   member = this.member,
-      //   meetingcontent = this.meetingcontent,
-      //   meetingtime = this.meetingtime,
-      //   meetinglocation = this.meetinglocation,
-      //   latepenalty = this.latepenalty,
-      //   profilepic = 'def',
-      //   personal = "open"
-      // },
+      num(){
+        let number = this.$store.state.id;
+      },
+        
       // addSubmit() {
       //       // make ajax request and pass the data. I'm not certain how to do it with axios but something along the lines of this
       //       axios.post('/list', {
