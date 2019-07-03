@@ -30,40 +30,47 @@
       <div class="container">
         <form>
           <div class="form-group">
-            <label for="meetingName">모임 이름</label>
-            <input type="text" class="form-control" id="meetingName" aria-describedby="meetingName"
-              placeholder="이름을 입력해주세요.">
-            <small id="meetingName" class="form-text text-muted"></small>
+            <label for="people">모임 이름</label>
+            <textarea class="form-control" rows="1" cols="80" name="subject" style="overflow:hidden" v-model="meettingname">
+            </textarea>
           </div>
           <div class="form-group">
             <label for="people">인 원</label>
-            <input type="text" class="form-control" id="meetingName" aria-describedby="meetingName"
-              placeholder="인원을 입력해주세요.">
-
+            <textarea class="form-control" rows="1" cols="80" name="subject" style="overflow:hidden" v-model="member">
+            </textarea>
           </div>
           <div class="form-group">
             <label for="explain">모임 설명</label>
-            <input type="text" class="form-control" id="explain" placeholder="내용을 입력해주세요.">
+            <textarea class="form-control" rows="1" cols="80" name="subject" style="overflow:hidden" v-model="meetingcontent">
+            </textarea>
+
           </div>
           <div class="form-group">
             <label for="choosetime">시간</label>
+            <textarea class="form-control" rows="1" cols="80" name="subject" style="overflow:hidden" v-model="meetingtime">
+            </textarea>
 
           </div>
           <div class="form-group">
             <label for="place">장소</label>
+            <textarea class="form-control" rows="1" cols="80" name="subject" style="overflow:hidden" v-model="meetinglocation">
+            </textarea>
+
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="category">카테고리</label>
-          </div>
+          </div> -->
           <div class="form-group">
-            <label for="tardyCash">지각비용</label>
+            <label for="latepenalty">지각비용</label>
+             <textarea class="form-control" rows="1" cols="80" name="subject" style="overflow:hidden" v-model="latepenalty">
+            </textarea>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="tardyCash">썸네일 사진첨부</label>
           </div>
           <div class="form-group">
             비공개 <input type="checkbox" id="secret" class="form-check-label">
-          </div>
+          </div> -->
           <router-link class="btn btn-outline-secondary btn-sm" to="/GroupRoom" style="float:left">확인</router-link>
         </form>
       </div>
@@ -81,18 +88,30 @@
   import CopyRight from "@/components/common/CopyRight/"
   import HeaderComponent from "@/components/common/HeaderComponent/"
   import MoveTop from "@/components/common/MoveTop/"
-
+  import {
+    store
+  } from '../../store'
 
   export default {
     data() {
-      return {}
+      return {
+        meettingname: store.state.meettingname,
+        member: store.state.member,
+        meetingcontent: store.state.meetingcontent,
+        meetingtime: store.state.meetingtime,
+        meetinglocation: store.state.meetinglocation,
+        latepenalty: store.state.latepenalty
+      }
     },
     components: {
       CopyRight,
       HeaderComponent,
       MoveTop
-    }
+    },
 
+    methods: {
+
+    }
 
 
   }

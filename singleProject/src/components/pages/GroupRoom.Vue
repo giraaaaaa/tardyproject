@@ -73,7 +73,8 @@
             <tr v-for="item in meetinglist" v-bind:key="item">
                 <td>{{item.id}}</td>
                 <!-- <td><router-link @click="move(item)" to="/Meeting">{{item.meettingname}}</router-link></td> -->
-                <td><a @click="move(item)">{{item.meettingname}}</a></td>
+                <td><a  class="btn btn-link" @click="move(item)">{{item.meettingname}}</a></td>
+                
                 <td>{{item.meetingtime}}</td>
                 <td>{{item.meetinglocation}}</td>
             </tr>

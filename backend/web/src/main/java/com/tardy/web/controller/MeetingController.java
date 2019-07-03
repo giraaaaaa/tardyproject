@@ -64,7 +64,7 @@ public class MeetingController {
         map.put("result", "SUCCESS");
         return map;
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/")
     public void    deleteById(@PathVariable Long id){
         System.out.println("deleteById" + id);
         meetingRepository.deleteById(id);

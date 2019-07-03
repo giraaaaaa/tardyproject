@@ -68,7 +68,7 @@
           </div> -->
           <router-link class="btn btn-outline-secondary btn-sm" to="/GroupRoom">확인</router-link>
           <router-link class="btn btn-outline-secondary btn-sm" to="/ModifyMeeting">수정</router-link>
-          <input type="button" style="float:none" class="btn btn-outline-secondary btn-sm" value="삭제">
+          <input type="button" @click="deleteById" style="float:none" class="btn btn-outline-secondary btn-sm" value="삭제">
 
         </form>
       </div>
@@ -124,7 +124,17 @@
       num(){
         let number = this.$store.state.id;
       },
-        
+      deleteById (e) {
+        var arr_splice = 
+       e.preventDefault();
+       axios.delete(`${this.context}/${number}`)
+         .then(res=>{
+           alert(`SUCCESS2 : ${res.data}`)
+         })
+         .catch(e=>{
+           alert('ERROR')
+         })
+     },  
       // addSubmit() {
       //       // make ajax request and pass the data. I'm not certain how to do it with axios but something along the lines of this
       //       axios.post('/list', {
