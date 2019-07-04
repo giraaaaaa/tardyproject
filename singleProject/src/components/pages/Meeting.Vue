@@ -125,14 +125,14 @@
         let number = this.$store.state.id;
       },
       deleteById (e) {
-        var arr_splice = 
        e.preventDefault();
-       axios.delete(`${this.context}/${number}`)
+       axios.delete(`${this.context}/list/${store.state.id}`)
          .then(res=>{
            alert(`SUCCESS2 : ${res.data}`)
          })
          .catch(e=>{
            alert('ERROR')
+           this.$router.link(-1);
          })
      },  
       // addSubmit() {

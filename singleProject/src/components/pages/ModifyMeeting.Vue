@@ -71,7 +71,11 @@
           <div class="form-group">
             비공개 <input type="checkbox" id="secret" class="form-check-label">
           </div> -->
-          <router-link class="btn btn-outline-secondary btn-sm" to="/GroupRoom" style="float:left">확인</router-link>
+          
+          <button @click="modi" class="btn btn-outline-secondary btn-sm"  style="float:left" >확인          
+          </button>
+
+
         </form>
       </div>
       <br>
@@ -88,13 +92,16 @@
   import CopyRight from "@/components/common/CopyRight/"
   import HeaderComponent from "@/components/common/HeaderComponent/"
   import MoveTop from "@/components/common/MoveTop/"
-  import {
-    store
-  } from '../../store'
+  import axios from 'axios'
+  import {store} from '../../store'
 
   export default {
+    // props:['id'],
+
     data() {
       return {
+        context : 'http://localhost:9000/meetings',
+
         meettingname: store.state.meettingname,
         member: store.state.member,
         meetingcontent: store.state.meetingcontent,
@@ -110,7 +117,36 @@
     },
 
     methods: {
+      modi(e) {
+         e.preventDefault();
 
+        let data = {
+          meettingname: this.meettingname,
+          member: this.member,
+          meetingcontent: this.meetingcontent,
+          meetingtime: this.meetingtime,
+          meetinglocation: this.meetinglocation,
+          latepenalty: this.latepenalty,
+          // profilepic: this.profilepic,
+          // personal: this.personal
+        }
+        alert(data.meettingname)
+        alert(this.$store.state.id)
+        // alert(data.personal)
+        let headers = {
+         'Content-Type': 'application/json',
+         'Authorization' : 'JWT fefege..'
+        }
+        axios.put(`${this.context}/${this.$store.state.id}`,JSON.stringify(data),  {headers: headers})
+          .then(res=>{
+            alert(`SUCCESS2 : ${res.data}`)
+              alert("여기까지는 들어옴")
+              this.$router.push("/GroupRoom");
+          })
+          .catch(e=>{
+            alert('ERROR')
+          })
+      }
     }
 
 

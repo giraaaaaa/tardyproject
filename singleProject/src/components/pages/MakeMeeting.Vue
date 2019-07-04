@@ -150,6 +150,7 @@
           })
           .catch(e=>{
             alert('ERROR')
+            this.$router.link(-1);
           })
       }
 
