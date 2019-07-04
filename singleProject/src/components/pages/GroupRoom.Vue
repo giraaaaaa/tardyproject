@@ -51,7 +51,7 @@
             <img src="../../../static/images/3oneyoung.png" class="rounded-circle" alt="Cinque Terre">
             <br><br>
 
-            <a href="#" class="btn btn-primary">더 보기</a>
+            <!-- <a href="#" class="btn btn-primary">더 보기</a> -->
           </div>
         </div>
 
